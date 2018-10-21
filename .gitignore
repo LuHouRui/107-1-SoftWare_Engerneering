@@ -86,6 +86,7 @@ slnx.sqlite
 *.VC.VC.opendb
 
 # Visual Studio profiler
+slnx.sqlite
 *.psess
 *.vsp
 *.vspx
