@@ -46,17 +46,17 @@ namespace Insert_DataBase_Example.ImportService
                 .Select(node =>
                 {
                     OpenData item = new OpenData();
-                    item.資料年度 = getValue(node, "資料年度");
-                    item.統計項目 = getValue(node, "統計項目");
-                    item.稅目別 = getValue(node, "稅目別");
-                    item.資料單位 = getValue(node, "資料單位");
-                    item.值 = getValue(node, "值");
+                    item.資料年度 = GetValue(node, "資料年度");
+                    item.統計項目 = GetValue(node, "統計項目");
+                    item.稅目別 = GetValue(node, "稅目別");
+                    item.資料單位 = GetValue(node, "資料單位");
+                    item.值 = GetValue(node, "值");
                     return item;
                 }).ToList();
 
             return result;
         }
-        public string getValue(XElement node, string propertyName)
+        public string GetValue(XElement node, string propertyName)
         {
             return node.Element(propertyName)?.Value?.Trim();
         }
