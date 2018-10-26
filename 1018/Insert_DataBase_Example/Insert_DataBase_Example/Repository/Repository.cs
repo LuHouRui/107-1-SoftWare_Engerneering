@@ -13,8 +13,7 @@ namespace Insert_DataBase_Example.Repository
         {
             get
             {
-                return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename = 
-D:\DcTenXen0621\Data\School\107-1_Software Engineering\1018\Insert_DataBase_Example\Insert_DataBase_Example\App_Data\OpenData.mdf";
+                return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DcTenXen0621\Data\School\107-1_Software Engineering\1018\Insert_DataBase_Example\Insert_DataBase_Example\App_Data\OpenData.mdf";
             }
         }
         //使用C#執行資料庫指令INSERT
@@ -37,6 +36,33 @@ VALUES                  (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
             command.ExecuteNonQuery();
             //關閉對資料庫的連線
             connection.Close();
+        }
+
+        public List<OpenData> SelectAll(string name)
+        {
+            var result = new List<OpenData>();
+            var connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            var command = new SqlCommand("", connection);
+            command.CommandText = string.Format(@"
+Select 資料年度,統計項目,稅目別,資料單位,值 From OpenData");
+            if (!string.IsNullOrEmpty(name))
+                command.CommandText = $"{command.CommandText} Where 統計項目 = N'{name }'";
+
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                var newitem = new OpenData();
+                //newitem.資料年度 = reader.GetString(0);
+                newitem.統計項目 = reader.GetString(1);
+                //newitem.稅目別 = reader.GetString(2);
+                //newitem.資料單位 = reader.GetString(3);
+                //newitem.值 = reader.GetString(4);
+                result.Add(newitem);
+            }
+            
+            connection.Close();
+            return result;
         }
     }
 }

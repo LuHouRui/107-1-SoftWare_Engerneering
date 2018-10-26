@@ -14,15 +14,16 @@ namespace Insert_DataBase_Example
             //宣告 Repository型態的物件 repository
             Repository.Repository repository = new Repository.Repository();
             //使用物件importService的方法FindOpenData來讀取資料
-            var nodes = importService.FindOpenData();
+            var nodes = importService.FindOpenDataFromXml();
             //使用ForEach展開所有資料並使用INSERT(SQL語言)插入資料至資料庫
             nodes.ToList()
                  .ForEach(item =>
                  {
-                    repository.Insert(item);
+                     repository.Insert(item);
                  });
+            //var DbData = repository.SelectAll(null);
             //print以資料年度分組的結果
-            ShowOpenData(nodes);
+            ShowOpenData(repository.SelectAll(null));
             Console.ReadKey();
         }
         //將nodes的資料以GroupBy分組在展開統計每組的數量

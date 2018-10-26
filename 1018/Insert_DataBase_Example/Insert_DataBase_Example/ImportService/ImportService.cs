@@ -9,7 +9,12 @@ namespace Insert_DataBase_Example.ImportService
 {
     class ImportService
     {
-        public List<OpenData> FindOpenData()
+        public List<OpenData> FindOpenDataFromDb()
+        { 
+            var repository = new Repository.Repository();
+            return repository.SelectAll("統計項目");
+        }
+        public List<OpenData> FindOpenDataFromXml()
         {
             List<OpenData> result = new List<OpenData>();
             var Xml = XElement.Load(@"https://data.kcg.gov.tw/dataset/a1f496df-8fc1-424f-83c3-6c76b0c14496/resource/e4c6fda4-b261-4d70-af9f-f92c9390e75c/download/xml75.xml");
