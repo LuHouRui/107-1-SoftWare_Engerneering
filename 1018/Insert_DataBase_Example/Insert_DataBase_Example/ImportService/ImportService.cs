@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-
+using Insert_DataBase_Example.Repository;
 namespace Insert_DataBase_Example.ImportService
 {
     class ImportService
     {
-        public List<OpenData> FindOpenDataFromDb()
+        public List<OpenData> FindOpenDataFromDb(string name)
         { 
             var repository = new Repository.Repository();
-            return repository.SelectAll("統計項目");
+            return repository.SelectAll(name);
         }
         public List<OpenData> FindOpenDataFromXml()
         {
@@ -51,7 +51,7 @@ namespace Insert_DataBase_Example.ImportService
                 .Select(node =>
                 {
                     OpenData item = new OpenData();
-                    item.資料年度 = GetValue(node, "資料年度");
+                    item.資料年度 =GetValue(node, "資料年度");
                     item.統計項目 = GetValue(node, "統計項目");
                     item.稅目別 = GetValue(node, "稅目別");
                     item.資料單位 = GetValue(node, "資料單位");

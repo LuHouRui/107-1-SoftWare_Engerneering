@@ -17,6 +17,24 @@ namespace Insert_DataBase_Example.Repository
             }
         }
         //使用C#執行資料庫指令INSERT
+        public void Delete(string name)
+        {
+            //宣告 connection物件為 SqlConnection型態
+            var connection = new SqlConnection(ConnectionString);
+            //開啟對資料庫的連線
+            connection.Open();
+            //宣告 SqlCommand型態的物件command，其指令輸出到connection的來源處
+            var command = new SqlCommand("", connection);
+            //設定command的指令內容
+            command.CommandText = string.Format(@"
+DELETE FROM OpenData");
+            if (!string.IsNullOrEmpty(name))
+                command.CommandText = $"{command.CommandText} Where 資料單位 = N'{name }'";
+            //使用C#執行SQL語言的指令時所用的方法
+            command.ExecuteNonQuery();
+            //關閉對資料庫的連線
+            connection.Close();
+        }
         public void Insert(OpenData item)
         {
             //宣告 newItem內裝有OpenData型態的item
@@ -47,7 +65,7 @@ VALUES                  (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
             command.CommandText = string.Format(@"
 Select 資料年度,統計項目,稅目別,資料單位,值 From OpenData");
             if (!string.IsNullOrEmpty(name))
-                command.CommandText = $"{command.CommandText} Where 統計項目 = N'{name }'";
+                command.CommandText = $"{command.CommandText} Where 資料單位 = N'{name }'";
 
             var reader = command.ExecuteReader();
             while (reader.Read())
