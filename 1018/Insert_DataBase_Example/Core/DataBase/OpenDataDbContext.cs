@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Insert_DataBase_Example.DataBase
 {
-    class OpenDataDbContext:DbContext
+    public class OpenDataDbContext:DbContext
     {
         public string ConnectionString
         {
