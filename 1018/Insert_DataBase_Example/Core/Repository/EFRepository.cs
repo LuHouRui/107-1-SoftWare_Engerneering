@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Insert_DataBase_Example.Repository
 {
-    class EFRepository
+    public class EFRepository
     {
         private OpenDataDbContext openDataDbContext { get; set; }
 

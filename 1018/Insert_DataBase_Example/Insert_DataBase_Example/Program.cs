@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Insert_DataBase_Example.Models;
-using Insert_DataBase_Example.ImportService;
+using Insert_DataBase_Example.Service;
 
 namespace Insert_DataBase_Example
 {
@@ -11,7 +11,8 @@ namespace Insert_DataBase_Example
         static void Main(string[] args)
         {
             //宣告 ImportService型態的物件importService 
-            var importService = new ImportService.ImportService();
+
+            ImportService importService = new ImportService();
             EFImportService EFImportService = new EFImportService();
             //使用物件importService的方法FindOpenData來讀取資料
             var nodes =EFImportService.FindOpenDataFromDb("");

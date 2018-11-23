@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using Insert_DataBase_Example.Repository;
-namespace Insert_DataBase_Example.ImportService
+namespace Insert_DataBase_Example.Service
 {
-    class ImportService
+    public class ImportService
     {
         public List<OpenData> FindOpenDataFromDb(string name)
         { 

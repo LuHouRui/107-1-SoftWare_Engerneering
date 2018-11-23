@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Insert_DataBase_Example.Repository
 {
-    class Repository
+    public class Repository
     {
         //資料庫連線來源
         public string ConnectionString

@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Insert_DataBase_Example.ImportService
+namespace Insert_DataBase_Example.Service
 {
-    class EFImportService
+    public class EFImportService
     { public List<OpenData> FindOpenDataFromDb(string name)
         {
             var EFrepository = new EFRepository();
