@@ -46,16 +46,18 @@ namespace Insert_DataBase_Example.Service
             //        item.值 = getValue(node, "值");
             //        result.Add(item);
             //    });
-
+            int count = 1;
             result = nodes.ToList()
                 .Select(node =>
                 {
                     OpenData item = new OpenData();
+                    item.Id = count;
                     item.資料年度 =GetValue(node, "資料年度");
                     item.統計項目 = GetValue(node, "統計項目");
                     item.稅目別 = GetValue(node, "稅目別");
                     item.資料單位 = GetValue(node, "資料單位");
                     item.值 = GetValue(node, "值");
+                    count++;
                     return item;
                 }).ToList();
 

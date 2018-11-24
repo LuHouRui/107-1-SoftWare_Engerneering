@@ -12,7 +12,7 @@ namespace Insert_DataBase_Example.DataBase
         {
             get
             {
-                return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DcTenXen0621\Data\School\107-1_Software Engineering\1018\Insert_DataBase_Example\Insert_DataBase_Example\App_Data\OpenData.mdf";
+                return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DcTenXen0621\Data\School\107-1-SoftWare_Engerneering\1018\Insert_DataBase_Example\Insert_DataBase_Example\App_Data\OpenData.mdf;Integrated Security=True";
             }
         }
         public DbSet<OpenData> OpenData { get; set; }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Insert_DataBase_Example.Models;
 using Insert_DataBase_Example.Service;
+using Insert_DataBase_Example.DataBase;
+using Insert_DataBase_Example.Repository;
 
 namespace Insert_DataBase_Example
 {
@@ -11,20 +13,20 @@ namespace Insert_DataBase_Example
         static void Main(string[] args)
         {
             //宣告 ImportService型態的物件importService 
-
+            Repository.Repository repository = new Repository.Repository();
             ImportService importService = new ImportService();
             EFImportService EFImportService = new EFImportService();
             //使用物件importService的方法FindOpenData來讀取資料
-            var nodes =EFImportService.FindOpenDataFromDb("");
+            var result = importService.FindOpenDataFromXml();
             //使用ForEach展開所有資料並使用INSERT(SQL語言)插入資料至資料庫
-            //nodes.ToList()
-            //     .ForEach(item =>
-            //     {
-            //         repository.Insert(item);
-            //     });
-
+            result.ToList()
+                 .ForEach(item =>
+                 {
+                     repository.Insert(item);
+                 });
+            //var nodes = EFImportService.FindOpenDataFromDb("");
             //print以資料年度篩選的結果
-            ShowOpenData(nodes);
+            ShowOpenData(result);
             Console.ReadKey();
         }
         //將nodes的資料以GroupBy分組在展開統計每組的數量

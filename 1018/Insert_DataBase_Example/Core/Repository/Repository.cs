@@ -13,7 +13,7 @@ namespace Insert_DataBase_Example.Repository
         {
             get
             {
-                return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DcTenXen0621\Data\School\107-1_Software Engineering\1018\Insert_DataBase_Example\Insert_DataBase_Example\App_Data\OpenData.mdf";
+                return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\DcTenXen0621\Data\School\107-1-SoftWare_Engerneering\1018\Insert_DataBase_Example\Insert_DataBase_Example\App_Data\OpenData.mdf;Integrated Security=True";
             }
         }
         //使用C#執行資料庫指令INSERT
@@ -47,9 +47,9 @@ DELETE FROM OpenData");
             var command = new SqlCommand("", connection);
             //設定command的指令內容
             command.CommandText = string.Format(@"
-INSERT INTO OpenData (資料年度,統計項目,稅目別,資料單位,值)
-VALUES                  (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}')"
-    ,newItem.資料年度, newItem.統計項目, newItem.稅目別, newItem.資料單位, newItem.值);
+INSERT INTO OpenData (Id,資料年度,統計項目,稅目別,資料單位,值)
+VALUES                  (N'{0}',N'{1}',N'{2}',N'{3}',N'{4}',N'{5}')"
+    ,newItem.Id,newItem.資料年度, newItem.統計項目, newItem.稅目別, newItem.資料單位, newItem.值);
             //使用C#執行SQL語言的指令時所用的方法
             command.ExecuteNonQuery();
             //關閉對資料庫的連線
